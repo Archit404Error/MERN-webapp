@@ -6,6 +6,7 @@ import { dbConnect } from "./database";
 
 const app = express();
 
+// Some other comment
 // Middleware to parse json request bodies
 app.use(bodyParser.json());
 
