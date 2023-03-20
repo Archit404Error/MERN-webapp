@@ -9,32 +9,38 @@ import { successJson, errorJson } from "../utils/jsonResponses";
 const customerRouter = Router();
 
 customerRouter.get("/", async (req, res) => {
-  res.send(await CustomerController.getCustomers());
+  res.status(200).send(await CustomerController.getCustomers());
 });
 
 customerRouter.get("/:id", async (req, res) => {
   const id = new mongoose.Types.ObjectId(req.params.id);
-  res.send(successJson(await CustomerController.getCustomerById(id)));
+  res
+    .status(200)
+    .send(successJson(await CustomerController.getCustomerById(id)));
 });
 
 customerRouter.post("/", async (req, res) => {
   const { name, age, title, company } = req.body;
-  res.send(
-    successJson(
-      await CustomerController.insertCustomer(name, age, title, company)
-    )
-  );
+  res
+    .status(201)
+    .send(
+      successJson(
+        await CustomerController.insertCustomer(name, age, title, company)
+      )
+    );
 });
 
-customerRouter.post("/updateName/:id", async (req, res) => {
+customerRouter.put("/updateName/:id", async (req, res) => {
   const id = new mongoose.Types.ObjectId(req.params.id);
   const name = req.body.name;
-  res.send(successJson(await CustomerController.updateName(id, name)));
+  res
+    .status(200)
+    .send(successJson(await CustomerController.updateName(id, name)));
 });
 
 customerRouter.post("/resetAges", async (req, res) => {
   const numResets = await CustomerController.resetAges();
-  res.send(successJson(numResets));
+  res.status(200).send(successJson(numResets));
 });
 
 export default customerRouter;

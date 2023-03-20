@@ -108,8 +108,8 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "201": {
+            "description": "Created"
           }
         }
       }
@@ -133,7 +133,7 @@
       }
     },
     "/customers/updateName/{id}": {
-      "post": {
+      "put": {
         "description": "",
         "parameters": [
           {
