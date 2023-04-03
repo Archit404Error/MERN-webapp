@@ -21,7 +21,7 @@ app.use("/customers", customerRouter);
 /**
  * Some dummy routes to illustrate express syntax
  */
-app.get("/", (req, res) => {
+app.get("/", function (req, res) {
   res.send("Hello World!");
 });
 
@@ -29,7 +29,7 @@ app.post("/", (req, res) => {
   res.send(req.body);
 });
 
-app.listen(process.env.PORT || 3000, async () => {
+app.listen(process.env.PORT || 8000, async () => {
   console.log("✅ Server is up and running");
   await dbConnect();
 });
